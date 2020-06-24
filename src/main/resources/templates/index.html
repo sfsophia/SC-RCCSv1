@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+   <meta charset="ISO-8859-1">
+   <title>RCCS</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   <style>
+      table {
+         margin-left: auto;
+         margin-right: auto;
+      }
+   </style>
+</head>
+
+<body>
+   <h1 style="text-align: center;">Residential College Complaint System</h1>
+   <div style="text-align: center">
+    
+     <a th:href="@{/showNewComplaintForm}" class="btn btn-primary btn-sm mb-3">Add New Complaint</a>
+  </div>
+   
+   <table style="text-align: center;" class="table table-striped w-auto">
+      <thead>
+         <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Action Taken</th>
+            <th>Action</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr th:each="complaint : ${complaints}">
+            <td th:text="${complaint.id}">Id</td>
+            <td th:text="${complaint.name}">Name</td>
+            <td th:text="${complaint.category}">Category</td>
+            <td th:text="${complaint.description}">Description</td>
+            <td th:text="${complaint.status}">Status</td>
+            <td th:text="${complaint.action}">Action</td>
+            <td>
+               <a th:href="@{/viewComplaint/{id}(id=${complaint.id})}" class="btn btn-secondary">View</a>
+               <a th:href="@{/showFormForUpdate/{id}(id=${complaint.id})}" class="btn btn-primary">Update</a>
+               <a th:href="@{/deleteComplaint/{id}(id=${complaint.id})}" class="btn btn-danger">Delete</a></td>
+               
+         </tr>
+      </tbody>
+   </table>
+</body>
+
+</html>

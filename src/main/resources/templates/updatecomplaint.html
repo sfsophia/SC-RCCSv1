@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Residential College Complaint System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Residential College Complaint System</h1>
+        <hr>
+        <h2>Update Complaint</h2>
+
+        <form action="#" th:action="@{/updateComplaint}" th:object="${complaint}" method="POST">
+
+            <!-- Add hidden form field to handle update -->
+            <label for="id" style="font-weight:bold";>ID </label><br>
+            <input type="text" readonly="true" th:field="*{id}" class="form-control mb-4 col-4">
+            
+            <label for="name" style="font-weight:bold";>Name </label><br>
+            <input type="text" readonly="true" th:field="*{name}" class="form-control mb-4 col-4">
+            
+            <label for="category" style="font-weight:bold";>Category </label><br>
+            <input type="radio" th:field="*{category}" id="Electrical" value="Electrical"><label> Electrical Damage</label><br>
+           <input type="radio" th:field="*{category}" id="Electrical" value="Furniture"><label > Furniture Damage</label><br>
+           <input type="radio" th:field="*{category}" id="Electrical" value="Civil"><label > Civil Damage</label><br> 
+           <input type="radio" th:field="*{category}" id="Electrical" value="Others"><label > Others</label><br>
+            <br>
+            <label for="description" style="font-weight:bold";>Description </label><br>
+            <textarea th:field="*{description}"  row="8" cols="50"></textarea><br><br>
+            
+           <!--<input type="text" th:field="*{category}" class="form-control mb-4 col-4">
+              <input type="text" th:field="*{status}" class="form-control mb-4 col-4"> 
+           --> 
+           <label for="status" style="font-weight:bold";>Status</label><br>
+            
+           <select  th:field="*{status}" name='status' >
+            <option value="Pending">Pending Action</option>
+            <option value="Resolved">Resolved</option>
+            <option value="Unresolved">Unresolved</option>
+          </select><br><br>
+           <label for="action" style="font-weight:bold";>Action </label><br>
+            <input type="text" th:field="*{action}" class="form-control mb-4 col-4">
+
+            <button type="submit" class="btn btn-info col-2"> Update</button>
+        </form>
+
+        <hr>
+
+        <a th:href="@{/}"> Return > Complaint List</a>
+    </div>
+</body>
+
+</html>
